@@ -6,12 +6,12 @@
 #    By: dbliss <dbliss@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/01 18:48:01 by dbliss            #+#    #+#              #
-#    Updated: 2020/09/07 15:19:19 by dbliss           ###   ########.fr        #
+#    Updated: 2020/09/08 19:55:09 by dbliss           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Import OS image
-FROM debian: buster
+FROM debian:buster
 
 # Creating working directory to run commands there
 WORKDIR /srcs
@@ -27,7 +27,7 @@ RUN			apt-get -y install nginx \
 			default-mysql-server \
 			wordpress \
 			vim \
-			mc \
+			mc
 
 # Install php packages
 RUN			apt-get -y install php php-fpm php-mysql \
@@ -46,12 +46,12 @@ COPY		/srcs/wp-config.php /var/www/html/wordpress/
 
 # Configure nginx
 COPY		/srcs/localhost.conf /etc/nginx/sites-available/
-
 RUN			ln -s /etc/nginx/sites-available/localhost.conf /etc/nginx/sites-enabled/localhost.conf && \
 			rm /etc/nginx/sites-enabled/default && rm /etc/nginx/sites-available/default
 # To delete default index.html page
 RUN			rm /var/www/html/index.html
 
+# Copy other files from the host into the workdir
 COPY		/srcs/base.sql /srcs/start_server.sh /srcs/index.sh ./
 
 # SSL certificate

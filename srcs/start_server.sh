@@ -4,6 +4,5 @@ service mysql start
 mysql < base.sql
 service php7.3-fpm start
 
-# не в режиме daemon, чтобы контейнер "не потух", пока ты не выключешь ngnix
-# цикл делать нельзя!!!
+# switch off background process mode for the server
 nginx -g 'daemon off;'

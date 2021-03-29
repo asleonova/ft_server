@@ -12,12 +12,12 @@ To build the docker image, run :
 docker build -t my_server .
 ```
 
-The image is now created (*my_server* is its name). To start an instance of it, run :
+The image is now created (__*my_server*__ is its name). To start an instance of it, run :
 
 ```
 docker run -d -p 80:80 -p 443:443 --name container my_server
 ```
-*container* - will be the name of your container, it's possible not to specify and get the default one.
+__*container*__ - will be the name of your container, it's possible not to specify and get the default one.
 
 ### What now ?
 
